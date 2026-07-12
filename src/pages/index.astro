@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Skills from '../components/Skills.astro';
+const base = import.meta.env.BASE_URL ?? '/';
 ---
 
 <Layout>
@@ -16,10 +17,10 @@ import Skills from '../components/Skills.astro';
           and polished digital experiences that make everyday processes simpler.
         </p>
         <div class="mt-8 flex flex-wrap gap-4">
-          <a href="/projects" class="rounded-full bg-cyan-500 px-5 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-cyan-400">
+          <a href={`${base}projects`} class="rounded-full bg-cyan-500 px-5 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-cyan-400">
             Explore Projects
           </a>
-          <a href="/#skills" class="rounded-full border border-zinc-700 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-400 hover:text-cyan-300">
+          <a href={`${base}#skills`} class="rounded-full border border-zinc-700 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-400 hover:text-cyan-300">
             View Skills
           </a>
         </div>

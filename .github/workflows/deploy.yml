@@ -27,6 +27,9 @@ jobs:
       - name: Build Astro site
         run: npm run build
 
+      - name: Disable Jekyll on Pages
+        run: touch dist/.nojekyll
+
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4.0.0
         with:
