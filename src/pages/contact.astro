@@ -121,7 +121,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
 
           <div class="text-xs text-slate-400">
-            Auto-typing demo (display-only). No form submission is performed.
+            Secure message display with auto-typing demo (no form submission is performed).
           </div>
         </div>
 
@@ -151,7 +151,7 @@ import Layout from '../layouts/Layout.astro';
             if (!nameEl || !emailEl || !msgEl) return;
 
             const caretHost = nameEl.parentElement;
-            const caret = blinkCaret(caretHost);
+            blinkCaret(caretHost);
 
             const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
             const typeInto = async (inputEl, text) => {
