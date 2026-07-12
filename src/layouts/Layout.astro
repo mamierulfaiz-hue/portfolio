@@ -1,0 +1,29 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+
+const { title = 'Amierul Faiz | Portfolio', description = 'Personal portfolio focused on IoT efficiency and web development.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-slate-100">
+    <Navigation />
+    <main class="bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.16),_transparent_40%)]">
+      <slot />
+    </main>
+    <footer class="border-t border-zinc-800 bg-zinc-950/90">
+      <div class="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-6 text-sm text-slate-400 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+        <p>© 2026 Amierul Faiz. Built with Astro and Tailwind CSS.</p>
+        <p>IoT Efficiency • Web Development • Creative Problem Solving</p>
+      </div>
+    </footer>
+  </body>
+</html>

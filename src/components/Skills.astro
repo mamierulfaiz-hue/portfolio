@@ -1,0 +1,40 @@
+---
+import Credly from './Credly.astro';
+
+const skillGroups = [
+  {
+    title: 'Web Development',
+    items: ['Laravel', 'PHP', 'API Routing'],
+  },
+  {
+    title: 'Hardware & IoT',
+    items: ['Raspberry Pi', 'Firebase Integration', 'Sensor Automation'],
+  },
+  {
+    title: 'Computer Vision',
+    items: ['OpenCV', 'Tesseract OCR'],
+  },
+];
+---
+
+<div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+  <div class="space-y-6">
+    <div class="grid gap-4 md:grid-cols-3">
+      {skillGroups.map((group) => (
+        <div class="rounded-2xl border border-zinc-800 bg-zinc-900/70 p-6 shadow-lg shadow-black/20">
+          <h3 class="mb-4 text-lg font-semibold text-white">{group.title}</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            {group.items.map((item) => (
+              <li class="flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full bg-cyan-400"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <Credly />
+</div>
