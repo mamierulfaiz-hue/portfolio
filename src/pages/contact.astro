@@ -36,12 +36,14 @@ import Layout from '../layouts/Layout.astro';
           </div>
 
           <div class="rounded-2xl border border-zinc-800 bg-zinc-950/40 p-4">
-            <p class="text-xs font-mono uppercase tracking-widest text-cyan-300">Phone</p>
+            <p class="text-xs font-mono uppercase tracking-widest text-cyan-300">GitHub</p>
             <a
-              href="tel:+60167719050"
+              href="https://github.com/amierulfaiz"
+              target="_blank"
+              rel="noreferrer"
               class="mt-2 block font-mono text-sm text-emerald-300 hover:text-emerald-200 transition"
             >
-              +6016-711 9050
+              github.com/amierulfaiz
             </a>
           </div>
 
@@ -56,6 +58,7 @@ import Layout from '../layouts/Layout.astro';
               www.linkedin.com/in/amierulfaiz
             </a>
           </div>
+
         </div>
       </article>
 
@@ -68,16 +71,16 @@ import Layout from '../layouts/Layout.astro';
           <div class="text-xs font-mono text-cyan-200/70">TLS-ready</div>
         </div>
 
-        <form class="mt-6 space-y-5" method="post" action="">
+        <div class="mt-6 space-y-5">
           <div>
             <label class="block text-xs font-mono uppercase tracking-widest text-cyan-300" for="name">Name</label>
             <input
               id="name"
-              name="name"
               type="text"
-              required
-              class="mt-2 w-full rounded-2xl border border-zinc-800 bg-black/20 px-4 py-3 font-mono text-sm text-slate-100 placeholder:text-slate-500 outline-none transition focus:border-emerald-300/70 focus:shadow-[0_0_0_3px_rgba(52,211,153,0.18)]"
-              placeholder="e.g., Amierul Faiz"
+              readOnly
+              aria-readonly="true"
+              tabIndex={-1}
+              class="mt-2 w-full rounded-2xl border border-zinc-800 bg-black/20 px-4 py-3 font-mono text-sm text-slate-100 placeholder:text-slate-500 outline-none transition"
             />
           </div>
 
@@ -85,11 +88,11 @@ import Layout from '../layouts/Layout.astro';
             <label class="block text-xs font-mono uppercase tracking-widest text-cyan-300" for="email">Email</label>
             <input
               id="email"
-              name="email"
               type="email"
-              required
-              class="mt-2 w-full rounded-2xl border border-zinc-800 bg-black/20 px-4 py-3 font-mono text-sm text-slate-100 placeholder:text-slate-500 outline-none transition focus:border-emerald-300/70 focus:shadow-[0_0_0_3px_rgba(52,211,153,0.18)]"
-              placeholder="you@example.com"
+              readOnly
+              aria-readonly="true"
+              tabIndex={-1}
+              class="mt-2 w-full rounded-2xl border border-zinc-800 bg-black/20 px-4 py-3 font-mono text-sm text-slate-100 placeholder:text-slate-500 outline-none transition"
             />
           </div>
 
@@ -97,32 +100,97 @@ import Layout from '../layouts/Layout.astro';
             <label class="block text-xs font-mono uppercase tracking-widest text-cyan-300" for="message">Message</label>
             <textarea
               id="message"
-              name="message"
-              required
+              readOnly
+              aria-readonly="true"
+              tabIndex={-1}
               rows="5"
-              class="mt-2 w-full resize-none rounded-2xl border border-zinc-800 bg-black/20 px-4 py-3 font-mono text-sm text-slate-100 placeholder:text-slate-500 outline-none transition focus:border-emerald-300/70 focus:shadow-[0_0_0_3px_rgba(52,211,153,0.18)]"
-              placeholder="Write your message..."
+              class="mt-2 w-full resize-none rounded-2xl border border-zinc-800 bg-black/20 px-4 py-3 font-mono text-sm text-slate-100 placeholder:text-slate-500 outline-none transition"
             />
           </div>
 
-          <button
-            type="submit"
-            class="w-full rounded-2xl bg-emerald-300/10 px-5 py-3 text-sm font-semibold text-emerald-200 transition hover:bg-emerald-300/20 hover:text-emerald-100 border border-emerald-300/30 hover:border-emerald-300/60"
-          >
-            Encrypt and Send
-          </button>
+          <div class="pt-1">
+            <button
+              type="button"
+              disabled
+              aria-disabled="true"
+              class="w-full cursor-not-allowed rounded-2xl bg-emerald-300/10 px-5 py-3 text-sm font-semibold text-emerald-200 opacity-90 border border-emerald-300/40"
+            >
+              Secure Channel Active
+            </button>
+          </div>
 
-          <p class="text-xs text-slate-400">
-            This form UI is for your portfolio. Connect it to your backend (email service / API route) as needed.
-          </p>
-        </form>
+          <div class="text-xs text-slate-400">
+            Auto-typing demo (display-only). No form submission is performed.
+          </div>
+        </div>
+
+        <script>
+          const parts = [
+            { el: 'name', value: 'Recruiter' },
+            { el: 'email', value: 'recruiter@company.com' },
+            {
+              el: 'message',
+              value:
+                'Hello Amierul. I reviewed your portfolio and I am very impressed with your SOC and Threat Detection skills. I would like to connect.',
+            },
+          ];
+
+          const blinkCaret = (container) => {
+            const caret = document.createElement('span');
+            caret.textContent = '▌';
+            caret.className = 'ml-1 inline-block animate-pulse text-emerald-300';
+            container.appendChild(caret);
+            return caret;
+          };
+
+          const run = async () => {
+            const nameEl = document.getElementById('name');
+            const emailEl = document.getElementById('email');
+            const msgEl = document.getElementById('message');
+            if (!nameEl || !emailEl || !msgEl) return;
+
+            const caretHost = nameEl.parentElement;
+            const caret = blinkCaret(caretHost);
+
+            const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+            const typeInto = async (inputEl, text) => {
+              inputEl.value = '';
+              for (let i = 0; i < text.length; i++) {
+                inputEl.value += text[i];
+                await sleep(18);
+              }
+            };
+
+            // loop forever
+            while (true) {
+              for (const part of parts) {
+                const target = document.getElementById(part.el);
+                if (!target) continue;
+                await typeInto(target, part.value);
+                await sleep(500);
+              }
+
+              await sleep(2500);
+
+              // clear
+              nameEl.value = '';
+              emailEl.value = '';
+              msgEl.value = '';
+
+              await sleep(600);
+            }
+          };
+
+          run();
+        </script>
 
         <style is:global>
-          input:focus-visible,
-          textarea:focus-visible {
+          input:focus,
+          textarea:focus {
             outline: none;
           }
         </style>
+
       </article>
     </div>
   </section>
