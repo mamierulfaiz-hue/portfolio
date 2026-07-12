@@ -166,6 +166,7 @@ import Layout from '../layouts/Layout.astro';
     <script>
       const typedTargets = document.querySelectorAll('[data-typed]');
       typedTargets.forEach((el) => {
+        if (!(el instanceof HTMLElement)) return;
         const text = el.getAttribute('data-typed') || '';
         // render empty initially
         el.textContent = '';
@@ -177,7 +178,8 @@ import Layout from '../layouts/Layout.astro';
           if (el.dataset.done === 'true') return;
           el.dataset.done = 'true';
           const caretEl = el.querySelector('.typed-caret');
-          el.removeChild(caretEl);
+          if (caretEl) el.removeChild(caretEl);
+
 
           let i = 0;
           const speed = 18;
