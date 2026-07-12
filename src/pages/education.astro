@@ -2,58 +2,78 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Education & Awards | Amierul Faiz" description="Education background and achievements, awards, and contest highlights.">
+<Layout title="Achievements and Awards | Amierul Faiz" description="Achievements, awards, and digital badge logs from competitions and events.">
   <section class="mx-auto max-w-6xl px-6 py-20 lg:px-8">
     <div class="mb-10 max-w-3xl">
-      <p class="text-sm uppercase tracking-[0.35em] text-cyan-400">Education & Awards</p>
-      <h1 class="mt-3 text-4xl font-semibold text-white sm:text-5xl">Academic Journey & Achievements</h1>
+      <p class="text-sm uppercase tracking-[0.35em] text-cyan-400">Achievements and Awards</p>
+      <h1 class="mt-3 text-4xl font-semibold text-white sm:text-5xl">Mission Success Logs</h1>
       <p class="mt-5 text-lg leading-8 text-slate-300">
-        Overview of your education background plus contest placements and awards.
+        Verified results and cyber victories—styled like digital badges for a clean, dark-themed experience.
       </p>
     </div>
 
-    <div class="grid gap-6 lg:grid-cols-2">
-      <article class="rounded-2xl border border-zinc-800 bg-zinc-900/80 p-8 shadow-lg shadow-black/20">
-        <h2 class="text-2xl font-semibold text-white">Education</h2>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {[
+        {
+          badge: 'Gold Medal (Top 5 Percent)',
+          event: 'Cisco APJC NetAcad Riders 2026',
+          details: 'Ranked 4th in Malaysia for advanced networking and security automation.',
+        },
+        {
+          badge: 'Gold Award',
+          event: 'IDPEX',
+          details: 'Won out of more than 20 entries for building a Smart Home Garbage Monitoring IoT solution.',
+        },
+        {
+          badge: 'Gold Award',
+          event: 'EREKA',
+          details: 'Won among 30 project participants for designing a secure Lost and Found SQL Database System.',
+        },
+        {
+          badge: '6th Place Nationally',
+          event: 'NERACA 3.0 CTF',
+          details: 'Competed out of 32 teams using advanced cryptography and protocol exploitation strategies.',
+        },
+        {
+          badge: '8th Place National Finalist',
+          event: 'UiTM Cyber Quest CTF',
+          details: 'Solved complex technical challenges in Cryptography and Reverse Engineering.',
+        },
+        {
+          badge: '26th Place Overall',
+          event: 'International Battle of Hackers (IBOH) 2025',
+          details: 'Competed against 42 international teams in incident response and web exploitation.',
+        },
+      ].map((item) => (
+        <article
+          class="group relative rounded-2xl border border-zinc-800 bg-zinc-900/60 p-7 shadow-lg shadow-black/20 transition-all duration-300 hover:border-cyan-400/60 hover:bg-zinc-900/70 hover:shadow-cyan-500/10"
+        >
+          <div class="absolute inset-0 rounded-2xl opacity-0 blur-xl transition-all duration-300 group-hover:opacity-100 group-hover:bg-[radial-gradient(circle_at_top,_rgba(34,211,238,0.30),_transparent_60%)]" />
 
-        <div class="mt-6 space-y-5">
-          <div class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5">
-            <h3 class="text-lg font-semibold text-white">Bachelor of Electronic Engineering Technology (Electronic Network Design) with honours</h3>
-            <p class="mt-2 text-sm text-slate-300">Sep 2023 to Nov 2027</p>
-            <p class="mt-2 text-sm text-slate-300">CGPA: 3.72</p>
+          <div class="relative">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="text-xs font-mono uppercase tracking-widest text-cyan-300">{item.badge}</p>
+                <h2 class="mt-2 text-lg font-semibold text-white group-hover:text-cyan-200 transition-colors">
+                  {item.event}
+                </h2>
+              </div>
+              <div class="rounded-full border border-emerald-300/20 bg-emerald-300/5 px-3 py-1 text-xs font-mono text-emerald-200/80">
+                ACHIEVED
+              </div>
+            </div>
+
+            <p class="mt-4 text-sm leading-7 text-slate-300 group-hover:text-slate-100 transition-colors">
+              {item.details}
+            </p>
+
+            <div class="mt-5 h-px w-full rounded bg-gradient-to-r from-cyan-400/0 via-cyan-400/30 to-cyan-400/0" aria-hidden="true" />
           </div>
-
-          <div class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5">
-            <h3 class="text-lg font-semibold text-white">Diploma in Computer Engineering</h3>
-            <p class="mt-2 text-sm text-slate-300">Aug 2020 to Apr 2023</p>
-            <p class="mt-2 text-sm text-slate-300">Honors and Awards: Program Ijazah Dalam Negara (PIDN), JPA Scholar</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="rounded-2xl border border-zinc-800 bg-zinc-900/80 p-8 shadow-lg shadow-black/20">
-        <h2 class="text-2xl font-semibold text-white">Achievements & Awards</h2>
-
-        <ul class="mt-6 space-y-4 text-sm text-slate-300">
-          <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5">
-            <p class="text-base font-semibold text-white">Gold Medal (Top 5 percent)</p>
-            <p class="mt-2">Ranked 4th in Malaysia at the Cisco APJC NetAcad Riders 2026 for advanced networking and security automation.</p>
-          </li>
-          <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5">
-            <p class="text-base font-semibold text-white">6th Place Nationally</p>
-            <p class="mt-2">Competed out of 32 teams in the NERACA 3.0 CTF using advanced cryptography and protocol exploitation strategies.</p>
-          </li>
-          <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5">
-            <p class="text-base font-semibold text-white">26th Place Overall</p>
-            <p class="mt-2">Competed against 42 international teams in the International Battle of Hackers (IBOH) 2025 for incident response and web exploitation.</p>
-          </li>
-          <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5">
-            <p class="text-base font-semibold text-white">8th Place National Finalist</p>
-            <p class="mt-2">Solved complex technical challenges in Cryptography and Reverse Engineering at the UiTM Cyber Quest CTF.</p>
-          </li>
-        </ul>
-      </article>
+        </article>
+      ))}
     </div>
   </section>
 </Layout>
+
+
 
