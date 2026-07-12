@@ -12,41 +12,189 @@ import Layout from '../layouts/Layout.astro';
       </p>
     </div>
 
-    <div class="grid gap-6 lg:grid-cols-2">
-      <article class="rounded-2xl border border-zinc-800 bg-zinc-900/80 p-8 shadow-lg shadow-black/20">
-        <h2 class="text-2xl font-semibold text-white">My Journey</h2>
-        <div class="mt-5 space-y-4 text-slate-300 text-sm leading-7">
-          <p>
-            I am a university student and aspiring cybersecurity professional with a background in electronic network design.
-            I focus on SOC, penetration testing, and ethical hacking.
-          </p>
-          <p>
-            I’m building toward a career in threat detection and vulnerability research—moving step-by-step from lab learning to real-world security thinking.
-          </p>
-          <p>
-            Current focus: secure access control, practical network security, and incident-focused reasoning.
-          </p>
-        </div>
-      </article>
+    <div class="relative">
+      <div
+        class="pointer-events-none absolute left-4 top-2 bottom-2 w-1 rounded-full bg-cyan-500/20"
+        aria-hidden="true"
+      >
+        <div
+          class="absolute inset-0 rounded-full bg-gradient-to-b from-cyan-400/0 via-cyan-400/60 to-cyan-400/0 blur-[1px]"
+        ></div>
+        <div class="absolute left-1/2 top-0 h-full w-1 -translate-x-1/2 rounded-full bg-cyan-300/40 blur-sm" />
+        <div class="absolute left-1/2 top-0 h-full w-1 -translate-x-1/2 rounded-full bg-cyan-200/20 animate-pulse" />
+      </div>
 
-      <article class="rounded-2xl border border-zinc-800 bg-zinc-900/80 p-8 shadow-lg shadow-black/20">
-        <h2 class="text-2xl font-semibold text-white">Education</h2>
-
-        <div class="mt-6 space-y-5">
-          <div class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5">
-            <h3 class="text-lg font-semibold text-white">Bachelor of Electronic Engineering Technology (Electronic Network Design) with honours</h3>
-            <p class="mt-2 text-sm text-slate-300">Sep 2023 to Nov 2027</p>
-            <p class="mt-2 text-sm text-slate-300">CGPA: 3.72</p>
+      <div class="space-y-6">
+        <article class="group relative rounded-2xl border border-zinc-800 bg-zinc-900/70 p-7 pl-14 shadow-lg shadow-black/20 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-500/10 hover:shadow-2xl">
+          <div class="absolute left-1 top-7 flex h-9 w-9 items-center justify-center rounded-full border border-cyan-300/30 bg-zinc-950/60">
+            <div class="relative h-8 w-8">
+              <div class="absolute inset-0 rounded-full bg-cyan-400/15 blur" />
+              <div class="absolute inset-0 flex items-center justify-center text-cyan-300">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-5 w-5">
+                  <path d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4z" />
+                  <path d="M9.5 12l1.8 1.8L15 10" />
+                </svg>
+              </div>
+            </div>
           </div>
 
-          <div class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5">
-            <h3 class="text-lg font-semibold text-white">Diploma in Computer Engineering</h3>
-            <p class="mt-2 text-sm text-slate-300">Aug 2020 to Apr 2023</p>
-            <p class="mt-2 text-sm text-slate-300">Honors and Awards: Program Ijazah Dalam Negara (PIDN), JPA Scholar</p>
+          <div class="flex flex-col gap-2">
+            <div class="flex flex-wrap items-center gap-3">
+              <h3 class="font-mono text-lg font-semibold text-white">
+                High School
+              </h3>
+              <span
+                class="font-mono text-sm text-cyan-300"
+                data-typed="2015 to 2019"
+              >
+                <span class="typed-caret" />
+              </span>
+            </div>
+            <p class="text-sm text-slate-300">
+              <span class="font-semibold text-slate-200">Location:</span> Sekolah Menengah Sains Hulu Terengganu
+            </p>
+            <p class="text-sm leading-7 text-slate-300">
+              Built a strong foundation in science and technical subjects, setting the path for my engineering and technology journey.
+            </p>
           </div>
-        </div>
-      </article>
+        </article>
+
+        <article class="group relative rounded-2xl border border-zinc-800 bg-zinc-900/70 p-7 pl-14 shadow-lg shadow-black/20 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-500/10 hover:shadow-2xl">
+          <div class="absolute left-1 top-7 flex h-9 w-9 items-center justify-center rounded-full border border-cyan-300/30 bg-zinc-950/60">
+            <div class="relative h-8 w-8">
+              <div class="absolute inset-0 rounded-full bg-cyan-400/15 blur" />
+              <div class="absolute inset-0 flex items-center justify-center text-cyan-300">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-5 w-5">
+                  <rect x="7" y="7" width="10" height="10" rx="2" />
+                  <path d="M4 9h3M4 15h3M17 9h3M17 15h3" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <div class="flex flex-wrap items-center gap-3">
+              <h3 class="font-mono text-lg font-semibold text-white">
+                Diploma Level
+              </h3>
+              <span
+                class="font-mono text-sm text-cyan-300"
+                data-typed="Aug 2020 to Apr 2023"
+              >
+                <span class="typed-caret" />
+              </span>
+            </div>
+            <p class="text-sm text-slate-300">
+              <span class="font-semibold text-slate-200">Location:</span> Universiti Malaysia Perlis (UniMAP)
+            </p>
+            <p class="text-sm text-slate-300">
+              <span class="font-semibold text-slate-200">Title:</span> Diploma in Computer Engineering
+            </p>
+            <p class="text-sm text-slate-300">
+              <span class="font-semibold text-slate-200">Awards:</span> Program Ijazah Dalam Negara (PIDN), JPA Scholar
+            </p>
+            <p class="text-sm leading-7 text-slate-300">
+              Learned the core fundamentals of computer systems, hardware diagnostics, and early networking concepts.
+            </p>
+          </div>
+        </article>
+
+        <article class="group relative rounded-2xl border border-zinc-800 bg-zinc-900/70 p-7 pl-14 shadow-lg shadow-black/20 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-500/10 hover:shadow-2xl">
+          <div class="absolute left-1 top-7 flex h-9 w-9 items-center justify-center rounded-full border border-cyan-300/30 bg-zinc-950/60">
+            <div class="relative h-8 w-8">
+              <div class="absolute inset-0 rounded-full bg-cyan-400/15 blur" />
+              <div class="absolute inset-0 flex items-center justify-center text-cyan-300">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-5 w-5">
+                  <path d="M12 21s-7-4.35-7-11a7 7 0 0 1 14 0c0 6.65-7 11-7 11z" />
+                  <path d="M9.5 10.5h5" />
+                  <path d="M12 8v5" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <div class="flex flex-wrap items-center gap-3">
+              <h3 class="font-mono text-lg font-semibold text-white">
+                Bachelor Degree
+              </h3>
+              <span
+                class="font-mono text-sm text-cyan-300"
+                data-typed="Sep 2023 to Nov 2027"
+              >
+                <span class="typed-caret" />
+              </span>
+            </div>
+            <p class="text-sm text-slate-300">
+              <span class="font-semibold text-slate-200">Location:</span> Universiti Malaysia Perlis (UniMAP)
+            </p>
+            <p class="text-sm text-slate-300">
+              <span class="font-semibold text-slate-200">Title:</span> Bachelor of Electronic Engineering Technology (Electronic Network Design) with honours
+            </p>
+            <p class="text-sm text-slate-300">
+              <span class="font-semibold text-slate-200">Details:</span> Current CGPA 3.72
+            </p>
+            <p class="text-sm leading-7 text-slate-300">
+              Deepening my skills in electronic network design, focusing heavily on SOC environments, penetration testing, and securing critical systems.
+            </p>
+          </div>
+        </article>
+      </div>
     </div>
+
+    <style is:global>
+      .typed-caret {
+        display: inline-block;
+        width: 0.6ch;
+        margin-left: 2px;
+        height: 1.2em;
+        transform: translateY(0.15em);
+        border-right: 2px solid #22d3ee;
+        animation: caretBlink 1s step-end infinite;
+      }
+
+      @keyframes caretBlink {
+        0%, 50% { opacity: 1; }
+        50.01%, 100% { opacity: 0; }
+      }
+
+      .group:hover [data-typed] {
+        color: #67e8f9;
+      }
+    </style>
+
+    <script>
+      const typedTargets = document.querySelectorAll('[data-typed]');
+      typedTargets.forEach((el) => {
+        const text = el.getAttribute('data-typed') || '';
+        // render empty initially
+        el.textContent = '';
+        const caret = document.createElement('span');
+        caret.className = 'typed-caret';
+        el.appendChild(caret);
+
+        el.addEventListener('mouseenter', () => {
+          if (el.dataset.done === 'true') return;
+          el.dataset.done = 'true';
+          const caretEl = el.querySelector('.typed-caret');
+          el.removeChild(caretEl);
+
+          let i = 0;
+          const speed = 18;
+          const run = () => {
+            i++;
+            el.insertAdjacentText('beforeend', text.charAt(i - 1));
+            if (i < text.length) {
+              setTimeout(run, speed);
+            } else {
+              el.appendChild(caret);
+            }
+          };
+          setTimeout(run, speed);
+        }, { once: true });
+      });
+    </script>
+
   </section>
 </Layout>
 
