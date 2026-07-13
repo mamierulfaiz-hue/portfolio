@@ -8,11 +8,18 @@ const links = [
   { label: 'Projects', href: 'projects' },
   { label: 'Contact', href: 'contact' },
 ];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+function isActive(href: string): boolean {
+  const full = (base + href).replace(/\/$/, '') || '/';
+  return currentPath === full;
+}
 ---
 
 <nav class="sticky top-0 z-30 border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-    <a href={base} class="text-lg font-semibold tracking-wide text-slate-100 transition hover:text-cyan-400">
+    <a href={base} class="flex items-center gap-2.5 text-lg font-semibold tracking-wide text-slate-100 transition hover:text-cyan-400">
+      <span class="rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-0.5 font-mono text-xs font-bold tracking-widest text-cyan-400">MAF</span>
       Amierul Faiz
     </a>
 
@@ -38,7 +45,13 @@ const links = [
       {links.map((link) => (
         <a
           href={`${base}${link.href}`}
-          class="rounded-full px-3 py-2 transition hover:bg-zinc-800 hover:text-white"
+          class:list={[
+            'rounded-full px-3 py-2 transition',
+            isActive(link.href)
+              ? 'bg-cyan-400/10 text-cyan-400'
+              : 'hover:bg-zinc-800 hover:text-white',
+          ]}
+          aria-current={isActive(link.href) ? 'page' : undefined}
         >
           {link.label}
         </a>
@@ -51,7 +64,13 @@ const links = [
       {links.map((link) => (
         <a
           href={`${base}${link.href}`}
-          class="block rounded-lg px-3 py-2.5 text-sm text-slate-300 transition hover:bg-zinc-800 hover:text-white"
+          class:list={[
+            'block rounded-lg px-3 py-2.5 text-sm transition',
+            isActive(link.href)
+              ? 'bg-cyan-400/10 text-cyan-400'
+              : 'text-slate-300 hover:bg-zinc-800 hover:text-white',
+          ]}
+          aria-current={isActive(link.href) ? 'page' : undefined}
         >
           {link.label}
         </a>
