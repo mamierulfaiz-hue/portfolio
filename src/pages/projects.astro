@@ -1,5 +1,74 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    title: 'Mini CTF Platform',
+    icon: 'flag',
+    descriptions: [
+      'Built a gamified ethical hacking platform using Linux containers for over 120 users.',
+      'Created Capture the Flag (CTF) challenges focused on Web Exploitation and Cryptography.',
+    ],
+    tags: ['Linux', 'Docker', 'CTF', 'Python'],
+    github: '#',
+    demo: '#',
+  },
+  {
+    title: 'Secure RBAC System',
+    icon: 'shield',
+    descriptions: [
+      'Set up Role-Based Access Control (RBAC) to block unauthorized access.',
+      'Reduced data exposure risks by 85% and fixed XSS network vulnerabilities.',
+    ],
+    tags: ['Laravel', 'PHP', 'MySQL', 'RBAC'],
+    github: '#',
+    demo: '#',
+  },
+  {
+    title: 'Wireless Security Simulations',
+    icon: 'wifi',
+    descriptions: [
+      'Ran a Wi‑Fi phishing simulation using an ESP8266 microcontroller to harvest login credentials securely and demonstrate weaknesses in standard protocols.',
+      'Used an ESP8266 deauther to clone wireless networks and perform targeted attacks, proving how easily standard connections can be disrupted.',
+    ],
+    tags: ['ESP8266', 'IoT', 'C++', 'Networking'],
+    github: '#',
+    demo: '#',
+  },
+  {
+    title: 'Secure POS System',
+    icon: 'terminal',
+    descriptions: [
+      'Built a secure Point of Sale (POS) system using Laravel for 15 daily users.',
+      'Added authentication rules that reduced transaction errors by 30% and improved daily work efficiency.',
+    ],
+    tags: ['Laravel', 'PHP', 'SQL', 'Auth'],
+    github: '#',
+    demo: '#',
+  },
+  {
+    title: 'Smart Home Garbage Monitoring',
+    icon: 'cpu',
+    descriptions: [
+      'Constructed an IoT solution using three sensor modules to monitor waste securely.',
+      'Won a Gold Award at IDPEX out of more than 20 entries.',
+    ],
+    tags: ['IoT', 'Arduino', 'Sensors', 'C++'],
+    github: '#',
+    demo: '#',
+  },
+  {
+    title: 'Lost and Found Database System',
+    icon: 'database',
+    descriptions: [
+      'Designed a secure SQL database to register and track over 100 items.',
+      'Won a Gold Award at EREKA against 30 other project participants.',
+    ],
+    tags: ['SQL', 'PHP', 'MySQL', 'CRUD'],
+    github: '#',
+    demo: '#',
+  },
+];
 ---
 
 <Layout title="Projects | Amierul Faiz" description="Selected projects focused on IoT efficiency and practical automation.">
@@ -10,73 +79,112 @@ import Layout from '../layouts/Layout.astro';
         Portfolio Projects
       </h1>
       <p class="mt-5 text-lg leading-8 text-slate-300">
-        A set of cybersecurity-focused and secure systems projects—spanning CTFs, secure access control,
-        wireless security simulations, and practical secure applications.
+        A showcase of my technical builds, ranging from software applications to hardware integrations and system architecture.
       </p>
     </div>
 
     <div class="grid gap-6 lg:grid-cols-2">
-      <article class="rounded-2xl border border-zinc-800 bg-zinc-900/80 p-8 shadow-lg shadow-black/20">
-        <h2 class="text-2xl font-semibold text-white">Mini CTF Platform</h2>
-        <p class="mt-4 text-sm leading-7 text-slate-300">
-          Built a gamified ethical hacking platform using Linux containers for over 120 users.
-        </p>
-        <p class="mt-4 text-sm leading-7 text-slate-300">
-          Created Capture the Flag (CTF) challenges focused on Web Exploitation and Cryptography.
-        </p>
-      </article>
+      {
+        projects.map((project) => (
+          <article class="group relative flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900/70 p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/50 card-glow-cyan">
+            <div class="flex items-start gap-4">
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/10">
+                {project.icon === 'flag' && (
+                  <svg class="h-6 w-6 text-cyan-400 drop-shadow-[0_0_6px_rgba(34,211,238,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 22V4" />
+                    <path d="M4 4h11l-1 3 3 2-3 2 1 3H4" />
+                  </svg>
+                )}
+                {project.icon === 'shield' && (
+                  <svg class="h-6 w-6 text-cyan-400 drop-shadow-[0_0_6px_rgba(34,211,238,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <path d="M9 12l2 2 4-5" />
+                  </svg>
+                )}
+                {project.icon === 'wifi' && (
+                  <svg class="h-6 w-6 text-cyan-400 drop-shadow-[0_0_6px_rgba(34,211,238,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+                    <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+                    <circle cx="12" cy="20" r="1" />
+                  </svg>
+                )}
+                {project.icon === 'terminal' && (
+                  <svg class="h-6 w-6 text-cyan-400 drop-shadow-[0_0_6px_rgba(34,211,238,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="4 17 10 11 4 5" />
+                    <line x1="12" y1="19" x2="20" y2="19" />
+                  </svg>
+                )}
+                {project.icon === 'cpu' && (
+                  <svg class="h-6 w-6 text-cyan-400 drop-shadow-[0_0_6px_rgba(34,211,238,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="7" y="7" width="10" height="10" rx="2" />
+                    <path d="M4 10h3M4 14h3M17 10h3M17 14h3M10 4v3M14 4v3M10 17v3M14 17v3" />
+                  </svg>
+                )}
+                {project.icon === 'database' && (
+                  <svg class="h-6 w-6 text-cyan-400 drop-shadow-[0_0_6px_rgba(34,211,238,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <ellipse cx="12" cy="5" rx="8" ry="3" />
+                    <path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5" />
+                    <path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" />
+                  </svg>
+                )}
+              </div>
 
-      <article class="rounded-2xl border border-zinc-800 bg-zinc-900/80 p-8 shadow-lg shadow-black/20">
-        <h2 class="text-2xl font-semibold text-white">Secure RBAC System</h2>
-        <p class="mt-4 text-sm leading-7 text-slate-300">
-          Set up Role-Based Access Control (RBAC) to block unauthorized access.
-        </p>
-        <p class="mt-4 text-sm leading-7 text-slate-300">
-          Reduced data exposure risks by 85% and fixed XSS network vulnerabilities.
-        </p>
-      </article>
+              <h2 class="text-2xl font-semibold text-white transition-colors group-hover:text-cyan-200">
+                {project.title}
+              </h2>
+            </div>
 
-      <article class="rounded-2xl border border-zinc-800 bg-zinc-900/80 p-8 shadow-lg shadow-black/20">
-        <h2 class="text-2xl font-semibold text-white">Wireless Security Simulations</h2>
-        <p class="mt-4 text-sm leading-7 text-slate-300">
-          Ran a Wi‑Fi phishing simulation using an ESP8266 microcontroller to harvest login credentials securely
-          and demonstrate weaknesses in standard protocols.
-        </p>
-        <p class="mt-4 text-sm leading-7 text-slate-300">
-          Used an ESP8266 deauther to clone wireless networks and perform targeted attacks, proving how easily
-          standard connections can be disrupted.
-        </p>
-      </article>
+            <div class="mt-5 flex-1">
+              {project.descriptions.map((desc) => (
+                <p class="mt-3 text-sm leading-7 text-slate-300 transition-colors group-hover:text-slate-200">
+                  {desc}
+                </p>
+              ))}
+            </div>
 
-      <article class="rounded-2xl border border-zinc-800 bg-zinc-900/80 p-8 shadow-lg shadow-black/20">
-        <h2 class="text-2xl font-semibold text-white">Secure POS System</h2>
-        <p class="mt-4 text-sm leading-7 text-slate-300">
-          Built a secure Point of Sale (POS) system using Laravel for 15 daily users.
-        </p>
-        <p class="mt-4 text-sm leading-7 text-slate-300">
-          Added authentication rules that reduced transaction errors by 30% and improved daily work efficiency.
-        </p>
-      </article>
+            <div class="mt-6 h-px w-full rounded bg-gradient-to-r from-cyan-400/0 via-cyan-400/30 to-cyan-400/0" aria-hidden="true" />
 
-      <article class="rounded-2xl border border-zinc-800 bg-zinc-900/80 p-8 shadow-lg shadow-black/20">
-        <h2 class="text-2xl font-semibold text-white">Smart Home Garbage Monitoring</h2>
-        <p class="mt-4 text-sm leading-7 text-slate-300">
-          Constructed an IoT solution using three sensor modules to monitor waste securely.
-        </p>
-        <p class="mt-4 text-sm leading-7 text-slate-300">
-          Won a Gold Award at IDPEX out of more than 20 entries.
-        </p>
-      </article>
+            <div class="mt-5 flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span class="rounded-full border border-cyan-300/15 bg-cyan-400/5 px-3 py-1 font-mono text-[11px] text-cyan-300/80">
+                  {tag}
+                </span>
+              ))}
+            </div>
 
-      <article class="rounded-2xl border border-zinc-800 bg-zinc-900/80 p-8 shadow-lg shadow-black/20">
-        <h2 class="text-2xl font-semibold text-white">Lost and Found Database System</h2>
-        <p class="mt-4 text-sm leading-7 text-slate-300">
-          Designed a secure SQL database to register and track over 100 items.
-        </p>
-        <p class="mt-4 text-sm leading-7 text-slate-300">
-          Won a Gold Award at EREKA against 30 other project participants.
-        </p>
-      </article>
+            <div class="mt-5 flex items-center justify-end gap-4">
+              <a href={project.github} class="flex items-center gap-1.5 text-xs font-medium text-slate-400 transition-colors hover:text-cyan-300">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+                GitHub
+              </a>
+              <a href={project.demo} class="flex items-center gap-1.5 text-xs font-medium text-slate-400 transition-colors hover:text-cyan-300">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+                View Project
+              </a>
+            </div>
+          </article>
+        ))
+      }
     </div>
   </section>
+
+  <style is:global>
+    .card-glow-cyan {
+      box-shadow: 0 0 0 rgba(34, 211, 238, 0);
+      transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    }
+    .card-glow-cyan:hover {
+      box-shadow:
+        0 0 20px rgba(34, 211, 238, 0.15),
+        0 0 40px rgba(34, 211, 238, 0.08),
+        inset 0 1px 0 rgba(34, 211, 238, 0.1);
+    }
+  </style>
 </Layout>
