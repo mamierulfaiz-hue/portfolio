@@ -164,24 +164,24 @@ const skillGroups = [
 ];
 ---
 
-<div class="space-y-10">
+<div class="space-y-8 sm:space-y-10">
   {skillGroups.map((group) => (
-    <section class="space-y-5" aria-label={group.title}>
-      <div class="flex items-center justify-between gap-4">
-        <h2 class="text-xl font-semibold text-white">{group.title}</h2>
+    <section class="space-y-4 sm:space-y-5" aria-label={group.title}>
+      <div class="flex items-center justify-between gap-3 sm:gap-4">
+        <h2 class="text-lg font-semibold text-white sm:text-xl">{group.title}</h2>
         <div
           class="h-px flex-1 rounded bg-gradient-to-r from-cyan-400/0 via-cyan-400/30 to-cyan-400/0"
           aria-hidden="true"
         />
       </div>
 
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4">
         {group.items.map((it) => (
           <div
-            class="group flex items-center gap-3 rounded-2xl border border-zinc-800 bg-zinc-900/70 p-4 shadow-lg shadow-black/20 transition-all duration-300 hover:border-cyan-400/50 hover:bg-zinc-900/80"
+            class="group flex items-center gap-3 rounded-xl border border-zinc-800 bg-zinc-900/70 p-3 shadow-lg shadow-black/20 transition-all duration-300 hover:border-cyan-400/50 hover:bg-zinc-900/80 sm:rounded-2xl sm:p-4"
           >
             <div
-              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-zinc-700/50 bg-zinc-800/60"
+              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-zinc-700/50 bg-zinc-800/60 sm:h-10 sm:w-10 sm:rounded-xl"
               aria-hidden="true"
             >
               <Fragment set:html={getIconSvg(it.icon)} />

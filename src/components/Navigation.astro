@@ -10,13 +10,31 @@ const links = [
 ];
 ---
 
-<nav class="sticky top-0 z-20 border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur">
-  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
+<nav class="sticky top-0 z-30 border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
     <a href={base} class="text-lg font-semibold tracking-wide text-slate-100 transition hover:text-cyan-400">
       Amierul Faiz
     </a>
 
-    <div class="flex flex-wrap items-center gap-3 text-sm text-slate-300">
+    <button
+      type="button"
+      class="inline-flex items-center justify-center rounded-lg p-2 text-slate-300 transition hover:bg-zinc-800 hover:text-white md:hidden"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      id="mobile-menu-btn"
+    >
+      <svg class="h-6 w-6 block" id="menu-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+      <svg class="h-6 w-6 hidden" id="menu-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+
+    <div class="hidden items-center gap-1 text-sm text-slate-300 md:flex">
       {links.map((link) => (
         <a
           href={`${base}${link.href}`}
@@ -27,4 +45,36 @@ const links = [
       ))}
     </div>
   </div>
+
+  <div class="hidden border-t border-zinc-800/60 md:hidden" id="mobile-menu">
+    <div class="space-y-1 px-4 pb-4 pt-3">
+      {links.map((link) => (
+        <a
+          href={`${base}${link.href}`}
+          class="block rounded-lg px-3 py-2.5 text-sm text-slate-300 transition hover:bg-zinc-800 hover:text-white"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
 </nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  if (btn && menu && iconOpen && iconClose) {
+    btn.addEventListener('click', () => {
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden', isOpen);
+      iconOpen.classList.toggle('hidden', !isOpen);
+      iconOpen.classList.toggle('block', isOpen);
+      iconClose.classList.toggle('hidden', isOpen);
+      iconClose.classList.toggle('block', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  }
+</script>
