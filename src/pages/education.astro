@@ -3,14 +3,17 @@ import Layout from '../layouts/Layout.astro';
 
 const achievements = [
   {
+    id: 'netacad-riders',
     title: 'Gold Medal (Top 5 Percent)',
     event: 'Cisco APJC NetAcad Riders 2026',
     details: 'Ranked 4th in Malaysia for advanced networking and security automation.',
     tone: 'gold',
     clearance: 'TOP-5%',
     icon: 'shield',
+    certImage: 'cisco-netacad-2026.jpg',
   },
   {
+    id: 'idpex-iot',
     title: 'Gold Award',
     event: 'IDPEX',
     details:
@@ -18,16 +21,20 @@ const achievements = [
     tone: 'gold',
     clearance: 'GOLD SIG',
     icon: 'microchip',
+    certImage: 'idpex-gold.jpg',
   },
   {
+    id: 'ereka-sql',
     title: 'Gold Award',
     event: 'EREKA',
     details: 'Won among 30 project participants for designing a secure Lost and Found SQL Database System.',
     tone: 'gold',
     clearance: 'SECURE DB',
     icon: 'database',
+    certImage: 'ereka-gold.jpg',
   },
   {
+    id: 'neraca-ctf',
     title: '6th Place Nationally',
     event: 'NERACA 3.0 CTF',
     details:
@@ -35,24 +42,31 @@ const achievements = [
     tone: 'neon',
     clearance: 'FLAGGED',
     icon: 'flag',
+    certImage: 'neraca-3.0-ctf.jpg',
   },
   {
+    id: 'uitm-quest',
     title: '8th Place National Finalist',
     event: 'UiTM Cyber Quest CTF',
     details: 'Solved complex technical challenges in Cryptography and Reverse Engineering.',
     tone: 'neon',
     clearance: 'KEY LOCK',
     icon: 'key',
+    certImage: 'uitm-cyber-quest.jpg',
   },
   {
+    id: 'iboh-2025',
     title: '26th Place Overall',
     event: 'International Battle of Hackers (IBOH) 2025',
     details: 'Competed against 42 international teams in incident response and web exploitation.',
     tone: 'neon',
     clearance: 'RADAR LOCK',
     icon: 'radar',
+    certImage: 'iboh-2025.jpg',
   },
 ] as const;
+
+const base = import.meta.env.BASE_URL ?? '/';
 ---
 
 <Layout title="Achievements and Awards | Amierul Faiz" description="Achievements, awards, and digital badge logs from competitions and events.">
@@ -203,19 +217,62 @@ const achievements = [
                   {item.event}
                 </h2>
 
-                <p class="mt-4 flex-1 text-sm leading-relaxed text-slate-400 transition-colors group-hover:text-slate-200">
+                <p class="mt-4 text-sm leading-relaxed text-slate-400 transition-colors group-hover:text-slate-200">
                   {item.details}
                 </p>
 
-                <div
-                  class={`mt-6 h-px w-full rounded bg-gradient-to-r ${isGold ? 'from-amber-400/0 via-amber-400/30 to-amber-400/0' : 'from-cyan-400/0 via-cyan-400/30 to-cyan-400/0'}`}
-                  aria-hidden="true"
-                />
+                <div class="mt-5 overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950/40 aspect-video relative group-hover:border-zinc-700/60 transition cursor-pointer" data-cert-img-click={`${base}certificates/${item.certImage}`} data-cert-title={item.event}>
+                  <img
+                    src={`${base}certificates/${item.certImage}`}
+                    alt={`${item.event} Preview`}
+                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                    <svg class="h-6 w-6 text-white drop-shadow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m4-3H6" />
+                    </svg>
+                  </div>
+                </div>
               </div>
             </article>
           );
         })
       }
+    </div>
+
+    <!-- Clean certificate modal structure -->
+    <div
+      id="cert-modal"
+      class="fixed inset-0 z-50 hidden flex-items-center justify-center p-4"
+      aria-modal="true"
+      role="dialog"
+    >
+      <div class="fixed inset-0 bg-black/80 backdrop-blur-sm" id="modal-overlay"></div>
+      <div class="relative z-10 w-full max-w-4xl overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950 p-3 shadow-2xl transition-transform duration-300 scale-95 opacity-0 sm:p-4" id="modal-container">
+        <div class="flex items-center justify-between border-b border-zinc-800 pb-3">
+          <h3 class="font-mono text-sm font-semibold text-slate-100 sm:text-base" id="modal-title">Certificate</h3>
+          <button
+            type="button"
+            class="rounded-lg p-1.5 text-slate-400 transition hover:bg-zinc-800 hover:text-white"
+            aria-label="Close modal"
+            id="modal-close-btn"
+          >
+            <svg class="h-5 w-5 sm:h-6 sm:w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="mt-3 flex items-center justify-center bg-black/40 p-2 rounded-xl border border-zinc-900/60 max-h-[70vh] overflow-y-auto">
+          <img
+            src=""
+            alt="Certificate View"
+            class="max-h-[60vh] max-w-full rounded-lg object-contain shadow-lg"
+            id="modal-image"
+          />
+        </div>
+      </div>
     </div>
 
     <style is:global>
@@ -268,7 +325,6 @@ const achievements = [
 
       .title-glitch {
         position: relative;
-        overflow: hidden;
       }
 
       .title-glitch::after {
@@ -276,15 +332,16 @@ const achievements = [
         position: absolute;
         left: 0;
         top: 0;
-        width: 0;
-        white-space: nowrap;
+        right: 0;
+        height: 100%;
         color: rgba(34, 211, 238, 0.95);
         text-shadow: 0 0 18px rgba(34, 211, 238, 0.35);
-        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
       }
 
       .group:hover .title-glitch::after {
-        animation: typing-glitch 520ms steps(24, end) forwards;
+        animation: typing-glitch 520ms ease forwards;
       }
 
       .group:hover .title-glitch {
@@ -293,21 +350,21 @@ const achievements = [
 
       @keyframes typing-glitch {
         0% {
-          width: 0;
+          opacity: 0;
           clip-path: inset(0 100% 0 0);
           filter: hue-rotate(0deg);
         }
         35% {
-          width: 110%;
+          opacity: 1;
           clip-path: inset(0 0 0 0);
           filter: hue-rotate(10deg);
         }
         60% {
-          width: 92%;
+          opacity: 1;
           clip-path: inset(20% 0 0 0);
         }
         100% {
-          width: 100%;
+          opacity: 0.2;
           clip-path: inset(0 0 0 0);
           filter: hue-rotate(0deg);
         }
@@ -334,6 +391,58 @@ const achievements = [
         }
       }
     </style>
+
+    <script>
+      const modal = document.getElementById('cert-modal');
+      const modalContainer = document.getElementById('modal-container');
+      const modalOverlay = document.getElementById('modal-overlay');
+      const modalClose = document.getElementById('modal-close-btn');
+      const modalTitle = document.getElementById('modal-title');
+      const modalImage = document.getElementById('modal-image') as HTMLImageElement | null;
+      const certElements = document.querySelectorAll('[data-cert-img-click]');
+
+      const showModal = (src: string, title: string) => {
+        if (!modal || !modalContainer || !modalTitle || !modalImage) return;
+        modalImage.src = src;
+        modalTitle.textContent = title;
+        
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+
+        setTimeout(() => {
+          modalContainer.classList.remove('scale-95', 'opacity-0');
+          modalContainer.classList.add('scale-100', 'opacity-100');
+        }, 10);
+      };
+
+      const hideModal = () => {
+        if (!modal || !modalContainer) return;
+        modalContainer.classList.remove('scale-100', 'opacity-100');
+        modalContainer.classList.add('scale-95', 'opacity-0');
+
+        setTimeout(() => {
+          modal.classList.remove('flex');
+          modal.classList.add('hidden');
+          document.body.style.overflow = '';
+        }, 300);
+      };
+
+      certElements.forEach(el => {
+        el.addEventListener('click', () => {
+          const src = el.getAttribute('data-cert-img-click') || '';
+          const title = el.getAttribute('data-cert-title') || 'Certificate';
+          showModal(src, title);
+        });
+      });
+
+      if (modalClose) modalClose.addEventListener('click', hideModal);
+      if (modalOverlay) modalOverlay.addEventListener('click', hideModal);
+
+      // close on escape key
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') hideModal();
+      });
+    </script>
   </section>
 </Layout>
-
